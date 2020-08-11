@@ -49,6 +49,8 @@ $update_items_record = mysqli_query($con, $update_items);
             <a class="nav-item nav-link" href="order.php">Order</a>
             <a class="nav-item nav-link active" href="nutrition.php">Nutritional information<span class="sr-only">(current)</span></a>
             <a class="nav-item nav-link" href="admin.php">Admin</a>
+            <a class="nav-item nav-link" href="loginpage.php">Log in</a>
+            <a class="nav-item nav-link" href="process_logout.php">Logout</a>
         </div>
     </div>
 </nav>
@@ -60,6 +62,7 @@ $update_items_record = mysqli_query($con, $update_items);
     </div>
 </div>
 
+<body>
 
 <h3>Select item to view KJ content</h3>
 <! -- Items form -->

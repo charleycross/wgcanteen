@@ -49,6 +49,8 @@ $update_items_record = mysqli_query($con, $update_items);
             <a class="nav-item nav-link active" href="order.php">Order<span class="sr-only">(current)</span></a>
             <a class="nav-item nav-link" href="nutrition.php">Nutritional information</a>
             <a class="nav-item nav-link" href="admin.php">Admin</a>
+            <a class="nav-item nav-link" href="loginpage.php">Log in</a>
+            <a class="nav-item nav-link" href="process_logout.php">Logout</a>
         </div>
     </div>
 </nav>
@@ -59,6 +61,14 @@ $update_items_record = mysqli_query($con, $update_items);
         <p class="lead">Feel free to place an order here! Press the buttons to sort by category.</p>
     </div>
 </div>
+
+
+<h4>Enter your details to begin your order</h4>
+<form action="insertstudent.php" method="post">
+    First Name: <input type="text" name="FName"><br>
+    Last Name: <input type="text" name="LName"><br>
+    <input type="submit" value="Begin">
+</form>
 
 <h2>Menu</h2>
 

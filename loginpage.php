@@ -8,6 +8,12 @@ if (mysqli_connect_errno()) {
     echo "connected to database";
 }
 
+if (isset($_GET['item'])){
+    $id = $_GET['item'];
+}else{
+    $id = 1;
+}
+
 
 ?>
 
@@ -32,11 +38,11 @@ if (mysqli_connect_errno()) {
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="index.php">Home<span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="index.php">Home</a>
             <a class="nav-item nav-link" href="order.php">Order</a>
             <a class="nav-item nav-link" href="nutrition.php">Nutritional information</a>
             <a class="nav-item nav-link" href="admin.php">Admin</a>
-            <a class="nav-item nav-link" href="loginpage.php">Log in</a>
+            <a class="nav-item nav-link active" href="loginpage.php">Log in<span class="sr-only">(current)</span></a>
             <a class="nav-item nav-link" href="process_logout.php">Logout</a>
         </div>
     </div>
@@ -49,34 +55,19 @@ if (mysqli_connect_errno()) {
     </div>
 </div>
 
-<!-- Footer -->
-<section id="footer">
-    <div class="container">
-        <div class="row text-center text-xs-center text-sm-left text-md-left">
-            <div class="col-xs-12 col-sm-4 col-md-4">
-                <h5>Quick links</h5>
-                <ul class="list-unstyled quick-links">
-                    <li><a href="index.php"><i class="fa fa-angle-double-right"></i>Home</a></li>
-                    <li><a href="drinks.php"><i class="fa fa-angle-double-right"></i>Order</a></li>
-                    <li><a href="orders.php;"><i class="fa fa-angle-double-right"></i>Admin</a></li>
+<h2>Login</h2>
 
-                </ul>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
-                <ul class="list-unstyled list-inline social text-center">
-                    <li class="list-inline-item"><a href="https://www.facebook.com/RNZFB/" aria-label="Link to Blind Foundation Facebook"><i
-                                    class="fa fa-facebook"></i></a></li>
-                    <li class="list-inline-item"><a href="https://twitter.com/blindnz?lang=en" aria-label="Link to Blind Foundation Twitter"><i
-                                    class="fa fa-twitter"></i></a></li>
-                    <li class="list-inline-item"><a href="https://www.instagram.com/blindfoundation/?hl=en" aria-label="Link to Blind Foundation Instagram"><i
-                                    class="fa fa-instagram"></i></a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</section>
+<form name='login_form' id='login_form' method='post' action='process_login.php'>
+    <label for='username'>Username:</label>
+    <input type='text' name='username'><br>
+
+    <label for='password'>Password:</label>
+    <input type='password' name='password'><br>
+
+    <input type='submit' name='submit' id='submit' value='Log In'>
+
+</form>
+
 
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.bundle.min.js"></script>

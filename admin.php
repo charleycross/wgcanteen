@@ -8,6 +8,10 @@ if (mysqli_connect_errno()) {
     echo "connected to database";
 }
 
+if((!isset($_SESSION['logged_in'])) or $_SESSION['logged_in']!=1){
+    header("Location: error_page.php");
+}
+
 if (isset($_GET['item'])){
     $id = $_GET['item'];
 }else{
@@ -51,6 +55,8 @@ $update_items_record = mysqli_query($con, $update_items);
             <a class="nav-item nav-link" href="order.php">Order</a>
             <a class="nav-item nav-link" href="nutrition.php">Nutritional information</a>
             <a class="nav-item nav-link active" href="admin.php">Admin<span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="loginpage.php">Log in</a>
+            <a class="nav-item nav-link" href="process_logout.php">Logout</a>
         </div>
     </div>
 </nav>
@@ -64,17 +70,6 @@ $update_items_record = mysqli_query($con, $update_items);
 
 <h2>Login</h2>
 
-<form name='login_form' id='login_form' method='post' action='process_login.php'>
-    <label for='Username'>Username:</label>
-    <input type='text' name='Username'><br>
-
-    <label for='Password'>Password:</label>
-    <input type='password' name='Password'><br>
-
-    <input type='submit' name='submit' id='submit' value='Log In'>
-
-
-</form>
 
 <h4>Add another</h4>
 <form action="insert.php" method="post">
@@ -86,7 +81,7 @@ $update_items_record = mysqli_query($con, $update_items);
     Category (hot or cold): <input type="text" name="Category"><br>
     <input type="submit" value="Insert">
 </form>
-</main>
+
 
 <h4>Update items</h4>
 
