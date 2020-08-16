@@ -13,6 +13,7 @@ if (isset($_GET['item'])) {
 } else {
     $id = 1;
 }
+
 $this_item_query = "SELECT ItemName, Price, KJ, Stock, Availability, Category FROM items WHERE ItemID='" . $id . "'";
 $this_item_result = mysqli_query($con, $this_item_query);
 $this_item_record = mysqli_fetch_assoc($this_item_result);
@@ -70,7 +71,215 @@ $update_items_record = mysqli_query($con, $update_items);
     <input type="submit" value="Begin">
 </form>
 
-<h2>Menu</h2>
+
+<form action="order.php" method="post">
+    <input type='submit' name='Monday' value="Monday">
+</form>
+
+<form action="order.php" method="post">
+    <input type='submit' name='Tuesday' value="Tuesday">
+</form>
+
+<form action="order.php" method="post">
+    <input type='submit' name='Wednesday' value="Wednesday">
+</form>
+
+<form action="order.php" method="post">
+    <input type='submit' name='Thursday' value="Thursday">
+</form>
+
+<form action="order.php" method="post">
+    <input type='submit' name='Friday' value="Friday">
+</form>
+
+<form action="order.php" method="post">
+    <input type='submit' name='Hot' value="Hot">
+</form>
+
+<form action="order.php" method="post">
+    <input type='submit' name='Cold' value="Cold">
+</form>
+<?php
+if(isset($_POST['Monday']))
+{
+    $result=mysqli_query($con, "SELECT * FROM items WHERE Availability='monday' OR Availability='everyday'");
+    if(mysqli_num_rows($result)!=0)
+    {
+        while($test = mysqli_fetch_array($result))
+        {
+            $id = $test['ItemID'];
+            echo "<table>";
+            echo "<tr>";
+            echo "<tr>". $test['ItemName']. "</tr>";
+            echo "<tr>". $test['Price']. "</tr>";
+            echo "</tr>";
+            echo "</table>";
+        }
+    }
+}
+?>
+
+<?php
+if(isset($_POST['Tuesday']))
+{
+    $result=mysqli_query($con, "SELECT * FROM items WHERE Availability='tuesday' OR Availability='everyday'");
+    if(mysqli_num_rows($result)!=0)
+    {
+        while($test = mysqli_fetch_array($result))
+        {
+            $id = $test['ItemID'];
+            echo "<table>";
+            echo "<tr>";
+            echo "<tr>". $test['ItemName']. "</tr>";
+            echo "<tr>". $test['Price']. "</tr>";
+            echo "</tr>";
+            echo "</table>";
+        }
+    }
+}
+?>
+
+<?php
+if(isset($_POST['Wednesday']))
+{
+    $result=mysqli_query($con, "SELECT * FROM items WHERE Availability='wednesday' OR Availability='everyday'");
+    if(mysqli_num_rows($result)!=0)
+    {
+        while($test = mysqli_fetch_array($result))
+        {
+            $id = $test['ItemID'];
+            echo "<table>";
+            echo "<tr>";
+            echo "<tr>". $test['ItemName']. "</tr>";
+            echo "<tr>". $test['Price']. "</tr>";
+            echo "</tr>";
+            echo "</table>";
+        }
+    }
+}
+?>
+
+<?php
+if(isset($_POST['Thursday']))
+{
+    $result=mysqli_query($con, "SELECT * FROM items WHERE Availability='thursday' OR Availability='everyday'");
+    if(mysqli_num_rows($result)!=0)
+    {
+        while($test = mysqli_fetch_array($result))
+        {
+            $id = $test['ItemID'];
+            echo "<table>";
+            echo "<tr>";
+            echo "<tr>". $test['ItemName']. "</tr>";
+            echo "<tr>". $test['Price']. "</tr>";
+            echo "</tr>";
+            echo "</table>";
+        }
+    }
+}
+?>
+
+<?php
+if(isset($_POST['Friday']))
+{
+    $result=mysqli_query($con, "SELECT * FROM items WHERE Availability='friday' OR Availability='everyday'");
+    if(mysqli_num_rows($result)!=0)
+    {
+        while($test = mysqli_fetch_array($result))
+        {
+            $id = $test['ItemID'];
+            echo "<table>";
+            echo "<tr>";
+            echo "<tr>". $test['ItemName']. "</tr>";
+            echo "<tr>". $test['Price']. "</tr>";
+            echo "</tr>";
+            echo "</table>";
+        }
+    }
+}
+?>
+
+<?php
+if(isset($_POST['Thursday']))
+{
+    $result=mysqli_query($con, "SELECT * FROM items WHERE Availability='thursday' OR Availability='everyday'");
+    if(mysqli_num_rows($result)!=0)
+    {
+        while($test = mysqli_fetch_array($result))
+        {
+            $id = $test['ItemID'];
+            echo "<table>";
+            echo "<tr>";
+            echo "<tr>". $test['ItemName']. "</tr>";
+            echo "<tr>". $test['Price']. "</tr>";
+            echo "</tr>";
+            echo "</table>";
+        }
+    }
+}
+?>
+
+<?php
+if(isset($_POST['Friday']))
+{
+    $result=mysqli_query($con, "SELECT * FROM items WHERE Availability='friday' OR Availability='everyday'");
+    if(mysqli_num_rows($result)!=0)
+    {
+        while($test = mysqli_fetch_array($result))
+        {
+            $id = $test['ItemID'];
+            echo "<table>";
+            echo "<tr>";
+            echo "<tr>". $test['ItemName']. "</tr>";
+            echo "<tr>". $test['Price']. "</tr>";
+            echo "</tr>";
+            echo "</table>";
+        }
+    }
+}
+?>
+
+<?php
+if(isset($_POST['Hot']))
+{
+    $result=mysqli_query($con, "SELECT * FROM items WHERE Category='hot'");
+    if(mysqli_num_rows($result)!=0)
+    {
+        while($test = mysqli_fetch_array($result))
+        {
+            $id = $test['ItemID'];
+            echo "<table>";
+            echo "<tr>";
+            echo "<tr>". $test['ItemName']. "</tr>";
+            echo "<tr>". $test['Price']. "</tr>";
+            echo "</tr>";
+            echo "</table>";
+        }
+    }
+}
+?>
+
+<?php
+if(isset($_POST['Cold']))
+{
+    $result=mysqli_query($con, "SELECT * FROM items WHERE Category='cold'");
+    if(mysqli_num_rows($result)!=0)
+    {
+        while($test = mysqli_fetch_array($result))
+        {
+            $id = $test['ItemID'];
+            echo "<table>";
+            echo "<tr>";
+            echo "<tr>". $test['ItemName']. "</tr>";
+            echo "<tr>". $test['Price']. "</tr>";
+            echo "</tr>";
+            echo "</table>";
+        }
+    }
+}
+?>
+
+<h2>Everything</h2>
 
 <?php
 
@@ -86,8 +295,8 @@ if ($result->num_rows > 0) {
 } else {
     echo "0 results";
 }
-
 ?>
+
 
 <!-- Footer -->
 <section id="footer">
