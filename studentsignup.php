@@ -1,6 +1,4 @@
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,8 +20,8 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
             <a class="nav-item nav-link" href="index.php">Home</a>
-            <a class="nav-item nav-link active" href="order.php">Order<span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" href="studentsignup.php">Get a student ID</a>
+            <a class="nav-item nav-link active" href="studentsignup.php">Get a student ID</a>
+            <a class="nav-item nav-link" href="order.php">Order</a>
             <a class="nav-item nav-link" href="nutrition.php">Nutritional information</a>
             <a class="nav-item nav-link" href="admin.php">Admin</a>
             <a class="nav-item nav-link" href="loginpage.php">Log in</a>
@@ -34,13 +32,10 @@
 
 <div class="jumbotron jumbotron-fluid text-center">
     <div class="container">
-        <h1 class="display-4">Order</h1>
-        <p class="lead">Feel free to place an order here! Press the buttons to sort by category.</p>
+        <h1 class="display-4">WGC Canteen</h1>
+        <p class="lead">Welcome!</p>
     </div>
 </div>
-
-
-
 
 
 <!-- Footer -->
@@ -51,7 +46,7 @@
                 <h5>Quick links</h5>
                 <ul class="list-unstyled quick-links">
                     <li><a href="index.php"><i class="fa fa-angle-double-right"></i>Home</a></li>
-                    <li><a href="order.php"><i class="fa fa-angle-double-right"></i>Order</a></li>
+                    <li><a href="drinks.php"><i class="fa fa-angle-double-right"></i>Order</a></li>
                     <li><a href="orders.php;"><i class="fa fa-angle-double-right"></i>Admin</a></li>
 
                 </ul>
@@ -60,15 +55,12 @@
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
                 <ul class="list-unstyled list-inline social text-center">
-                    <li class="list-inline-item"><a href="https://www.facebook.com/RNZFB/"
-                                                    aria-label="Link to Blind Foundation Facebook"><i
-                                    class="fa fa-facebook"></i></a></li>
-                    <li class="list-inline-item"><a href="https://twitter.com/blindnz?lang=en"
-                                                    aria-label="Link to Blind Foundation Twitter"><i
-                                    class="fa fa-twitter"></i></a></li>
-                    <li class="list-inline-item"><a href="https://www.instagram.com/blindfoundation/?hl=en"
-                                                    aria-label="Link to Blind Foundation Instagram"><i
-                                    class="fa fa-instagram"></i></a></li>
+                    <li class="list-inline-item"><a href="https://www.facebook.com/RNZFB/" aria-label="Link to Blind Foundation Facebook"><i
+                                class="fa fa-facebook"></i></a></li>
+                    <li class="list-inline-item"><a href="https://twitter.com/blindnz?lang=en" aria-label="Link to Blind Foundation Twitter"><i
+                                class="fa fa-twitter"></i></a></li>
+                    <li class="list-inline-item"><a href="https://www.instagram.com/blindfoundation/?hl=en" aria-label="Link to Blind Foundation Instagram"><i
+                                class="fa fa-instagram"></i></a></li>
                 </ul>
             </div>
         </div>

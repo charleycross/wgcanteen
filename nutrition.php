@@ -1,28 +1,3 @@
-<?php
-
-$con = mysqli_connect("localhost", "crossch", "tallpark84", "crossch_canteen");
-if (mysqli_connect_errno()) {
-    echo "Failed to connect to MySQL:" . mysqli_connect_error();
-    die();
-} else {
-    echo "connected to database";
-}
-
-if (isset($_GET['item'])) {
-    $id = $_GET['item'];
-} else {
-    $id = 1;
-}
-$this_item_query = "SELECT ItemName, Price, KJ, Stock, Availability, Category FROM items WHERE ItemID='" . $id . "'";
-$this_item_result = mysqli_query($con, $this_item_query);
-$this_item_record = mysqli_fetch_assoc($this_item_result);
-
-$all_items_query = "SELECT ItemID, ItemName FROM items";
-$all_items_result = mysqli_query($con, $all_items_query);
-
-$update_items = "SELECT * FROM items";
-$update_items_record = mysqli_query($con, $update_items);
-?>
 
 
 <!DOCTYPE html>
@@ -47,6 +22,7 @@ $update_items_record = mysqli_query($con, $update_items);
         <div class="navbar-nav">
             <a class="nav-item nav-link" href="index.php">Home</a>
             <a class="nav-item nav-link" href="order.php">Order</a>
+            <a class="nav-item nav-link" href="studentsignup.php">Get a student ID</a>
             <a class="nav-item nav-link active" href="nutrition.php">Nutritional information<span class="sr-only">(current)</span></a>
             <a class="nav-item nav-link" href="admin.php">Admin</a>
             <a class="nav-item nav-link" href="loginpage.php">Log in</a>
@@ -62,55 +38,6 @@ $update_items_record = mysqli_query($con, $update_items);
     </div>
 </div>
 
-<body>
-
-<h3>Select item to view KJ content</h3>
-<! -- Items form -->
-<form name='items_form' id='items_form' method='get' action='nutrition.php'>
-    <select id='item' name='item'>
-        <! -- options -->
-        <?php
-        while ($all_items_record = mysqli_fetch_assoc($all_items_result)) {
-            echo "<option value = '" . $all_items_record['ItemID'] . "'>";
-            echo $all_items_record['ItemName'];
-            echo "</option>";
-        }
-        ?>
-    </select>
-
-    <input type="submit" name="items_button" value="Show me the nutritional information">
-</form>
-
-<?php
-echo "<p1> Name: " . $this_item_record['ItemName'] . "<br>";
-echo "<p1> KJ: " . $this_item_record['KJ'] . "<br>";
-?>
-
-<h4>Know what you're looking for? Try searching</h4>
-
-<form action="" method="post">
-    <input type="text" name='search'>
-    <input type="submit" name="submit" value="search">
-</form>
-
-<?php
-if (isset($_POST['search'])) {
-    $search = $_POST['search'];
-
-    $query1 = "SELECT * FROM items WHERE ItemName LIKE '%$search'";
-    $query = mysqli_query($con, $query1);
-    $count = mysqli_num_rows($query);
-
-    if ($count == 0) {
-        echo "There were no search results";
-    } else {
-        while ($row = mysqli_fetch_array($query)) {
-            echo $row['ItemName'];
-            echo "<br>";
-        }
-    }
-}
-?>
 
 
 <!-- Footer -->

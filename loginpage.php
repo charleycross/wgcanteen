@@ -40,6 +40,7 @@ if (isset($_GET['item'])){
         <div class="navbar-nav">
             <a class="nav-item nav-link" href="index.php">Home</a>
             <a class="nav-item nav-link" href="order.php">Order</a>
+            <a class="nav-item nav-link" href="studentsignup.php">Get a student ID</a>
             <a class="nav-item nav-link" href="nutrition.php">Nutritional information</a>
             <a class="nav-item nav-link" href="admin.php">Admin</a>
             <a class="nav-item nav-link active" href="loginpage.php">Log in<span class="sr-only">(current)</span></a>

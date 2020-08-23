@@ -1,35 +1,3 @@
-<?php
-
-$con = mysqli_connect("localhost", "crossch", "tallpark84", "crossch_canteen");
-if (mysqli_connect_errno()) {
-    echo "Failed to connect to MySQL:" . mysqli_connect_error();
-    die();
-} else {
-    echo "connected to database";
-}
-
-if((!isset($_SESSION['logged_in'])) or $_SESSION['logged_in']!=1){
-    header("Location: error_page.php");
-}
-
-if (isset($_GET['item'])){
-    $id = $_GET['item'];
-}else{
-    $id = 1;
-}
-
-$this_item_query = "SELECT ItemName, Price, KJ, Stock, Availability, Category FROM items WHERE ItemID='" . $id . "'";
-$this_item_result = mysqli_query($con, $this_item_query);
-$this_item_record = mysqli_fetch_assoc($this_item_result);
-
-$all_items_query = "SELECT ItemID, ItemName, Price FROM items";
-$all_items_result = mysqli_query($con, $all_items_query);
-
-$update_items = "SELECT * FROM items";
-$update_items_record = mysqli_query($con, $update_items);
-
-?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -53,6 +21,7 @@ $update_items_record = mysqli_query($con, $update_items);
         <div class="navbar-nav">
             <a class="nav-item nav-link" href="index.php">Home</a>
             <a class="nav-item nav-link" href="order.php">Order</a>
+            <a class="nav-item nav-link" href="studentsignup.php">Get a student ID</a>
             <a class="nav-item nav-link" href="nutrition.php">Nutritional information</a>
             <a class="nav-item nav-link active" href="admin.php">Admin<span class="sr-only">(current)</span></a>
             <a class="nav-item nav-link" href="loginpage.php">Log in</a>
@@ -67,53 +36,6 @@ $update_items_record = mysqli_query($con, $update_items);
         <p class="lead">Welcome!</p>
     </div>
 </div>
-
-<h2>Login</h2>
-
-
-<h4>Add another</h4>
-<form action="insert.php" method="post">
-    Item Name: <input type="text" name="ItemName"><br>
-    Cost: <input type="text" name="Price"><br>
-    KJ: <input type="text" name="KJ"><br>
-    Availability(Type 'everyday' or specify day of week: <input type="text" name="Availability"><br>
-    Stock (Type 1 for in stock, 0 for out of stock): <input type="text" name="Stock"><br>
-    Category (hot or cold): <input type="text" name="Category"><br>
-    <input type="submit" value="Insert">
-</form>
-
-
-<h4>Update items</h4>
-
-<table>
-    <tr>
-        <th>Item Information</th>
-        <th>Price</th>
-        <th>KJ</th>
-        <th>Availability</th>
-        <th>Stock</th>
-        <th>Category</th>
-        <th>Submit</th>
-        <th>Delete</th>
-    </tr>
-    <?php
-    while($row = mysqli_fetch_array($update_items_record))
-    {
-        echo "<tr><form action = update.php method= post>";
-        echo "<td><input type='text' name='ItemName' value='".$row['ItemName']."'></td>";
-        echo "<td><input type='text' name='Price' value='".$row['Price']."'></td>";
-        echo "<td><input type='text' name='KJ' value='".$row['KJ']."'></td>";
-        echo "<td><input type='text' name='Availability' value='".$row['Availability']."'></td>";
-        echo "<td><input type='text' name='Stock' value='".$row['Stock']."'></td>";
-        echo "<td><input type='text' name='Category' value='".$row['Category']."'></td>";
-        echo "<input type=hidden name=ItemID value='".$row['ItemID']."'>";
-        echo "<td><input type =submit></td>";
-        echo "<td><a href=delete.php?ItemID=".$row['ItemID'].">Delete</a></td>";
-        echo "</form></tr>";
-    }
-    ?>
-</table>
-
 
 <!-- Footer -->
 <section id="footer">
