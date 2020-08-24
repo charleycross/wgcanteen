@@ -4,10 +4,10 @@ session_start();
 
 $con = mysqli_connect("localhost", "crossch", "tallpark84", "crossch_canteen");
 
-$user = trim($_POST['Username']);
-$pass = trim($_POST['Password']);
+$user = trim($_POST['username']);
+$pass = trim($_POST['password']);
 
-$login_query = "SELECT password FROM admins WHERE username='".$user."'";
+$login_query = "SELECT Password FROM admins WHERE Username='".$user."'";
 $login_result = mysqli_query($con, $login_query);
 $login_record = mysqli_fetch_assoc($login_result);
 
@@ -21,7 +21,7 @@ if($verify){
 }
 else{
     echo "Incorrect username or password";
-    header("Location: index.php");
+    header("Location: order.php");
 }
 
 ?>

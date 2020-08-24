@@ -1,4 +1,29 @@
+<?php
 
+$con = mysqli_connect("localhost", "crossch", "tallpark84", "crossch_canteen");
+if (mysqli_connect_errno()) {
+    echo "Failed to connect to MySQL:" . mysqli_connect_error();
+    die();
+} else {
+    echo "connected to database";
+}
+
+if (isset($_GET['item'])) {
+    $id = $_GET['item'];
+} else {
+    $id = 1;
+}
+
+$this_item_query = "SELECT * FROM items WHERE ItemID='" . $id . "'";
+$this_item_result = mysqli_query($con, $this_item_query);
+$this_item_record = mysqli_fetch_assoc($this_item_result);
+
+$all_items_query = "SELECT ItemID, ItemName, Price FROM items ORDER BY Price ASC, ItemName ASC";
+$all_items_result = mysqli_query($con, $all_items_query);
+
+$update_items = "SELECT * FROM items";
+$update_items_record = mysqli_query($con, $update_items);
+?>
 
 
 <!DOCTYPE html>
@@ -39,8 +64,255 @@
     </div>
 </div>
 
+<h2>Place your order here: </h2>
+
+<form action="insertorder.php" method="post">
+    StudentID: <input type="text" name="StudentID"><br>
+    ID of item to order: <input type="text" name="ItemID"><br>
+    <input type="submit" name="order" value="Submit">
+</form>
+
+<h3>Select a day of the week to view everything available on that day. Otherwise, choose by category.</h3>
+
+<form action="order.php" method="post">
+    <input type='submit' name='Monday' value="Monday">
+</form>
+
+<form action="order.php" method="post">
+    <input type='submit' name='Tuesday' value="Tuesday">
+</form>
+
+<form action="order.php" method="post">
+    <input type='submit' name='Wednesday' value="Wednesday">
+</form>
+
+<form action="order.php" method="post">
+    <input type='submit' name='Thursday' value="Thursday">
+</form>
+
+<form action="order.php" method="post">
+    <input type='submit' name='Friday' value="Friday">
+</form>
+
+<form action="order.php" method="post">
+    <input type='submit' name='Hot' value="Hot">
+</form>
+
+<form action="order.php" method="post">
+    <input type='submit' name='Cold' value="Cold">
+</form>
 
 
+<?php
+if(isset($_POST['Monday']))
+{
+    $result=mysqli_query($con, "SELECT * FROM items WHERE Availability='monday' OR Availability='everyday'");
+    if(mysqli_num_rows($result)!=0)
+    {
+        while($test = mysqli_fetch_array($result))
+        {
+            echo "<table><tr><th>Item ID</th><th>Name</th><th>Price</th></tr>";
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+                echo "</td><td>" . $row["ItemID"]. "</td><td>" . $row["ItemName"]. "</td><td>" . $row["Price"]. "</td></tr>";
+            }
+            echo "</table>";
+        }
+    }
+}
+?>
+
+<?php
+if(isset($_POST['Tuesday']))
+{
+    $result=mysqli_query($con, "SELECT * FROM items WHERE Availability='tuesday' OR Availability='everyday'");
+    if(mysqli_num_rows($result)!=0)
+    {
+        while($test = mysqli_fetch_array($result))
+        {
+            echo "<table><tr><th>Item ID</th><th>Name</th><th>Price</th></tr>";
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+                echo "</td><td>" . $row["ItemID"]. "</td><td>" . $row["ItemName"]. "</td><td>" . $row["Price"]. "</td></tr>";
+            }
+            echo "</table>";
+        }
+    }
+}
+?>
+
+<?php
+if(isset($_POST['Wednesday']))
+{
+    $result=mysqli_query($con, "SELECT * FROM items WHERE Availability='wednesday' OR Availability='everyday'");
+    if(mysqli_num_rows($result)!=0)
+    {
+        while($test = mysqli_fetch_array($result))
+        {
+            echo "<table><tr><th>Item ID</th><th>Name</th><th>Price</th></tr>";
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+                echo "</td><td>" . $row["ItemID"]. "</td><td>" . $row["ItemName"]. "</td><td>" . $row["Price"]. "</td></tr>";
+            }
+            echo "</table>";
+        }
+    }
+}
+
+if(isset($_POST['Thursday']))
+{
+    $result=mysqli_query($con, "SELECT * FROM items WHERE Availability='thursday' OR Availability='everyday'");
+    if(mysqli_num_rows($result)!=0)
+    {
+        while($test = mysqli_fetch_array($result))
+        {
+            echo "<table><tr><th>Item ID</th><th>Name</th><th>Price</th></tr>";
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+                echo "</td><td>" . $row["ItemID"]. "</td><td>" . $row["ItemName"]. "</td><td>" . $row["Price"]. "</td></tr>";
+            }
+            echo "</table>";
+        }
+    }
+}
+
+if(isset($_POST['Friday']))
+{
+    $result=mysqli_query($con, "SELECT * FROM items WHERE Availability='friday' OR Availability='everyday'");
+    if(mysqli_num_rows($result)!=0)
+    {
+        while($test = mysqli_fetch_array($result))
+        {
+            echo "<table><tr><th>Item ID</th><th>Name</th><th>Price</th></tr>";
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+                echo "</td><td>" . $row["ItemID"]. "</td><td>" . $row["ItemName"]. "</td><td>" . $row["Price"]. "</td></tr>";
+            }
+            echo "</table>";
+        }
+    }
+}
+
+if(isset($_POST['Hot']))
+{
+    $result=mysqli_query($con, "SELECT * FROM items WHERE Category='hot'");
+    if(mysqli_num_rows($result)!=0)
+    {
+        while($test = mysqli_fetch_array($result))
+        {
+            echo "<table><tr><th>Item ID</th><th>Name</th><th>Price</th></tr>";
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+                echo "</td><td>" . $row["ItemID"]. "</td><td>" . $row["ItemName"]. "</td><td>" . $row["Price"]. "</td></tr>";
+            }
+            echo "</table>";
+        }
+    }
+}
+
+if(isset($_POST['Cold']))
+{
+    $result=mysqli_query($con, "SELECT * FROM items WHERE Category='cold'");
+    if(mysqli_num_rows($result)!=0)
+    {
+        while($test = mysqli_fetch_array($result))
+        {
+            echo "<table><tr><th>Item ID</th><th>Name</th><th>Price</th></tr>";
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+                echo "</td><td>" . $row["ItemID"]. "</td><td>" . $row["ItemName"]. "</td><td>" . $row["Price"]. "</td></tr>";
+            }
+            echo "</table>";
+        }
+    }
+}
+?>
+
+<h4>Prefer to see everything? Choose how you want it to be sorted: </h4>
+
+<form action="order.php" method="post">
+    <input type='submit' name='PriceLow' value="Price low to high">
+</form>
+
+<form action="order.php" method="post">
+    <input type='submit' name='PriceHigh' value="Price high to low">
+</form>
+
+<form action="order.php" method="post">
+    <input type='submit' name='Alphabetical' value="Alphabetical">
+</form>
+
+<form action="order.php" method="post">
+    <input type='submit' name='Random' value="Give me random">
+</form>
+
+<?php
+
+if(isset($_POST['PriceLow']))
+{
+    $result=mysqli_query($con, "SELECT * FROM items ORDER BY Price ASC");
+    if(mysqli_num_rows($result)!=0)
+    {
+        while($test = mysqli_fetch_array($result))
+        {
+            echo "<table><tr><th>Item ID</th><th>Name</th><th>Price</th></tr>";
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+                echo "</td><td>" . $row["ItemID"]. "</td><td>" . $row["ItemName"]. "</td><td>" . $row["Price"]. "</td></tr>";
+            }
+            echo "</table>";
+        }
+    }
+}
+if(isset($_POST['PriceHigh']))
+{
+    $result=mysqli_query($con, "SELECT * FROM items ORDER BY Price DESC");
+    if(mysqli_num_rows($result)!=0)
+    {
+        while($test = mysqli_fetch_array($result))
+        {
+            echo "<table><tr><th>Item ID</th><th>Name</th><th>Price</th></tr>";
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+                echo "</td><td>" . $row["ItemID"]. "</td><td>" . $row["ItemName"]. "</td><td>" . $row["Price"]. "</td></tr>";
+            }
+            echo "</table>";
+        }
+    }
+}
+if(isset($_POST['Alphabetical']))
+{
+    $result=mysqli_query($con, "SELECT * FROM items ORDER BY ItemName ASC");
+    if(mysqli_num_rows($result)!=0)
+    {
+        while($test = mysqli_fetch_array($result))
+        {
+            echo "<table><tr><th>Item ID</th><th>Name</th><th>Price</th></tr>";
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+                echo "</td><td>" . $row["ItemID"]. "</td><td>" . $row["ItemName"]. "</td><td>" . $row["Price"]. "</td></tr>";
+            }
+            echo "</table>";
+        }
+    }
+}
+if(isset($_POST['Random']))
+{
+    $result=mysqli_query($con, "SELECT * FROM items");
+    if(mysqli_num_rows($result)!=0)
+    {
+        while($test = mysqli_fetch_array($result))
+        {
+            echo "<table><tr><th>Item ID</th><th>Name</th><th>Price</th></tr>";
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+                echo "</td><td>" . $row["ItemID"]. "</td><td>" . $row["ItemName"]. "</td><td>" . $row["Price"]. "</td></tr>";
+            }
+            echo "</table>";
+        }
+    }
+}
+?>
 
 
 <!-- Footer -->

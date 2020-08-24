@@ -1,3 +1,16 @@
+<?php
+
+$con = mysqli_connect("localhost", "crossch", "tallpark84", "crossch_canteen");
+if (mysqli_connect_errno()) {
+    echo "Failed to connect to MySQL:" . mysqli_connect_error();
+    die();
+} else {
+    echo "connected to database";
+}
+
+
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -20,8 +33,8 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
             <a class="nav-item nav-link" href="index.php">Home</a>
-            <a class="nav-item nav-link active" href="studentsignup.php">Get a student ID</a>
             <a class="nav-item nav-link" href="order.php">Order</a>
+            <a class="nav-item nav-link active" href="studentsignup.php">Get a student ID</a>
             <a class="nav-item nav-link" href="nutrition.php">Nutritional information</a>
             <a class="nav-item nav-link" href="admin.php">Admin</a>
             <a class="nav-item nav-link" href="loginpage.php">Log in</a>
@@ -37,6 +50,18 @@
     </div>
 </div>
 
+<h4>Haven't got a studentID yet? Enter your details here to receive a student ID:</h4>
+<form action="signupprocess.php" method="post">
+    First Name: <input type="text" name="FName"><br>
+    Last Name: <input type="text" name="LName"><br>
+    <div <?php if (isset($email_error)): ?> class="form_error" <?php endif ?> >
+        <input type="Email" name="Email" placeholder="Email">
+        <?php if (isset($email_error)): ?>
+            <span><?php echo $email_error; ?></span>
+        <?php endif ?>
+    </div>
+    <input type="submit" name="register" value="Go">
+</form>
 
 <!-- Footer -->
 <section id="footer">
