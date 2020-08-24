@@ -8,6 +8,7 @@ if (mysqli_connect_errno()) {
     echo "connected to database";
 }
 
+// query to delete selected item from database
 $delete_item = "DELETE FROM items WHERE ItemID='$_GET[ItemID]'";
 
 if (!mysqli_query($con, $delete_item)) {

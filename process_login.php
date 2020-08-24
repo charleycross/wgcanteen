@@ -7,6 +7,8 @@ $con = mysqli_connect("localhost", "crossch", "tallpark84", "crossch_canteen");
 $user = trim($_POST['username']);
 $pass = trim($_POST['password']);
 
+
+// selects the password that corresponds to the username
 $login_query = "SELECT Password FROM admins WHERE Username='".$user."'";
 $login_result = mysqli_query($con, $login_query);
 $login_record = mysqli_fetch_assoc($login_result);

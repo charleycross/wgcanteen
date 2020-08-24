@@ -18,17 +18,21 @@ if (isset($_GET['item'])){
 }else{
     $id = 1;
 }
-
+// items query to get the information of currently selected item
 $this_item_query = "SELECT * FROM items WHERE ItemID='" . $id . "'";
 $this_item_result = mysqli_query($con, $this_item_query);
 $this_item_record = mysqli_fetch_assoc($this_item_result);
 
+// items query to select all of the items and populate table
 $all_items_query = "SELECT * FROM items";
 $all_items_result = mysqli_query($con, $all_items_query);
 
+
+// items query, selects everything about an item to update
 $update_items = "SELECT * FROM items";
 $update_items_record = mysqli_query($con, $update_items);
 
+// order query, selects all orders to populate table
 $all_orders_query = "SELECT * FROM orders";
 $all_orders_result = mysqli_query($con, $all_orders_query);
 

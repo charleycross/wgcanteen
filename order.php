@@ -14,13 +14,16 @@ if (isset($_GET['item'])) {
     $id = 1;
 }
 
+// selects details of currently selected item
 $this_item_query = "SELECT * FROM items WHERE ItemID='" . $id . "'";
 $this_item_result = mysqli_query($con, $this_item_query);
 $this_item_record = mysqli_fetch_assoc($this_item_result);
 
+// selects ID, name, and price, sorts them by ascending price and then ascending name
 $all_items_query = "SELECT ItemID, ItemName, Price FROM items ORDER BY Price ASC, ItemName ASC";
 $all_items_result = mysqli_query($con, $all_items_query);
 
+// selects everything from items
 $update_items = "SELECT * FROM items";
 $update_items_record = mysqli_query($con, $update_items);
 ?>
@@ -102,10 +105,16 @@ $update_items_record = mysqli_query($con, $update_items);
     <input type='submit' name='Cold' value="Cold">
 </form>
 
+<form action="order.php" method="post">
+    <input type='submit' name='Drink' value="Drinks">
+</form>
+
+
 
 <?php
 if(isset($_POST['Monday']))
 {
+    // selects all items that are available on monday or everyday
     $result=mysqli_query($con, "SELECT * FROM items WHERE Availability='monday' OR Availability='everyday'");
     if(mysqli_num_rows($result)!=0)
     {
@@ -125,6 +134,7 @@ if(isset($_POST['Monday']))
 <?php
 if(isset($_POST['Tuesday']))
 {
+    // selects all items that are available on tuesday or everyday
     $result=mysqli_query($con, "SELECT * FROM items WHERE Availability='tuesday' OR Availability='everyday'");
     if(mysqli_num_rows($result)!=0)
     {
@@ -144,6 +154,7 @@ if(isset($_POST['Tuesday']))
 <?php
 if(isset($_POST['Wednesday']))
 {
+    // selects all items that are available on wednesday or everyday
     $result=mysqli_query($con, "SELECT * FROM items WHERE Availability='wednesday' OR Availability='everyday'");
     if(mysqli_num_rows($result)!=0)
     {
@@ -161,6 +172,7 @@ if(isset($_POST['Wednesday']))
 
 if(isset($_POST['Thursday']))
 {
+    // selects all items that are available on thursday or everyday
     $result=mysqli_query($con, "SELECT * FROM items WHERE Availability='thursday' OR Availability='everyday'");
     if(mysqli_num_rows($result)!=0)
     {
@@ -178,6 +190,7 @@ if(isset($_POST['Thursday']))
 
 if(isset($_POST['Friday']))
 {
+    // selects all items that are available on friday or everyday
     $result=mysqli_query($con, "SELECT * FROM items WHERE Availability='friday' OR Availability='everyday'");
     if(mysqli_num_rows($result)!=0)
     {
@@ -195,6 +208,7 @@ if(isset($_POST['Friday']))
 
 if(isset($_POST['Hot']))
 {
+    // selects items that have the hot category
     $result=mysqli_query($con, "SELECT * FROM items WHERE Category='hot'");
     if(mysqli_num_rows($result)!=0)
     {
@@ -212,7 +226,25 @@ if(isset($_POST['Hot']))
 
 if(isset($_POST['Cold']))
 {
+    // selects items that have the cold category
     $result=mysqli_query($con, "SELECT * FROM items WHERE Category='cold'");
+    if(mysqli_num_rows($result)!=0)
+    {
+        while($test = mysqli_fetch_array($result))
+        {
+            echo "<table><tr><th>Item ID</th><th>Name</th><th>Price</th></tr>";
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+                echo "</td><td>" . $row["ItemID"]. "</td><td>" . $row["ItemName"]. "</td><td>" . $row["Price"]. "</td></tr>";
+            }
+            echo "</table>";
+        }
+    }
+}
+if(isset($_POST['Drink']))
+{
+    // selects items that have the drink category
+    $result=mysqli_query($con, "SELECT * FROM items WHERE Category='drink'");
     if(mysqli_num_rows($result)!=0)
     {
         while($test = mysqli_fetch_array($result))
@@ -250,6 +282,7 @@ if(isset($_POST['Cold']))
 
 if(isset($_POST['PriceLow']))
 {
+    // selects everything from items in price, low to high
     $result=mysqli_query($con, "SELECT * FROM items ORDER BY Price ASC");
     if(mysqli_num_rows($result)!=0)
     {
@@ -266,6 +299,7 @@ if(isset($_POST['PriceLow']))
 }
 if(isset($_POST['PriceHigh']))
 {
+    // selects everything from items in price, high to low
     $result=mysqli_query($con, "SELECT * FROM items ORDER BY Price DESC");
     if(mysqli_num_rows($result)!=0)
     {
@@ -282,6 +316,7 @@ if(isset($_POST['PriceHigh']))
 }
 if(isset($_POST['Alphabetical']))
 {
+    // selects everything from items in alphabetical order
     $result=mysqli_query($con, "SELECT * FROM items ORDER BY ItemName ASC");
     if(mysqli_num_rows($result)!=0)
     {
@@ -298,6 +333,7 @@ if(isset($_POST['Alphabetical']))
 }
 if(isset($_POST['Random']))
 {
+    // selects everything from items
     $result=mysqli_query($con, "SELECT * FROM items");
     if(mysqli_num_rows($result)!=0)
     {

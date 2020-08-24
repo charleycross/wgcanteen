@@ -13,15 +13,15 @@ if (isset($_GET['item'])) {
 } else {
     $id = 1;
 }
-$this_item_query = "SELECT ItemName, Price, KJ, Stock, Availability, Category FROM items WHERE ItemID='" . $id . "'";
+// gets information from currently selected item
+$this_item_query = "SELECT * FROM items WHERE ItemID='" . $id . "'";
 $this_item_result = mysqli_query($con, $this_item_query);
 $this_item_record = mysqli_fetch_assoc($this_item_result);
 
+// selects the name and ID of every item to populate drop down
 $all_items_query = "SELECT ItemID, ItemName FROM items";
 $all_items_result = mysqli_query($con, $all_items_query);
 
-$update_items = "SELECT * FROM items";
-$update_items_record = mysqli_query($con, $update_items);
 ?>
 
 
@@ -98,6 +98,7 @@ echo "<p1> KJ: " . $this_item_record['KJ'] . "<br>";
 if (isset($_POST['search'])) {
     $search = $_POST['search'];
 
+    // selects everything from items table pertaining to their search
     $query1 = "SELECT * FROM items WHERE ItemName LIKE '%$search'";
     $query = mysqli_query($con, $query1);
     $count = mysqli_num_rows($query);

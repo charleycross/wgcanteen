@@ -8,12 +8,15 @@ if (isset($_POST['order'])) {
     $StudentID = $_POST['StudentID'];
     $ItemID = $_POST['ItemID'];
 
+    // gets details of currently selected item
     $sql_e = "SELECT * FROM items WHERE ItemID='$ItemID'";
     $res_e = mysqli_query($con, $sql_e);
 
     if(mysqli_num_rows($res_e) > 0){
+        // inserts user-inputted order values into database
         $query = "INSERT INTO orders (StudentID, ItemID) VALUES ('$StudentID', '$ItemID')";
         $results = mysqli_query($con, $query);
+        // selects name of student with that student ID, so system can greet them
         $namequery = "SELECT FName from students WHERE StudentID='$StudentID'";
         $nameresults = mysqli_query($con, $namequery);
         while($row = mysqli_fetch_array($nameresults)) {
