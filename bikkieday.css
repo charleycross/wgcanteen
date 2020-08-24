@@ -6,7 +6,7 @@ body, html {
 }
 
 .jumbotron{
-    background-color: #32839e !important;
+    background-color: #1e5362 !important;
 }
 
 h1{
@@ -31,7 +31,7 @@ section .section-title {
     text-transform: uppercase;
 }
 #footer {
-    background: #32839e !important;
+    background: #1e5362 !important;
 }
 #footer h5{
     padding-left: 10px;
@@ -342,13 +342,17 @@ img.zoom {
     content: '\f106';
 }
 
-.container {
+/*.container {
     width: 100%;
     padding-right: 15px;
     padding-left: 15px;
-    padding-bottom: px;
+    padding-bottom: 2px;
     margin-right: auto;
     margin-left: auto;
+    float: left;
+}*/
+input, button{
+    vertical-align:middle;
 }
 
 .container1 {
@@ -401,8 +405,32 @@ img.zoom {
 
 .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
     color: #fff;
-    background-color: #32839e !important;
+    background-color: #1e5362 !important;
 }
+.caption-1 figcaption {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.caption-2 figcaption {
+    width: 80%;
+    position: absolute;
+    bottom: 1rem;
+    left: 10%;
+    background: rgba(255, 255, 255, 0.6);
+}
+
+.caption-3 figcaption {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transform: translateY(-50%);
+}
+
+
+
+
 
 
 

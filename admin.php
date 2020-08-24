@@ -1,3 +1,39 @@
+<?php
+session_start();
+
+$con = mysqli_connect("localhost", "crossch", "tallpark84", "crossch_canteen");
+if (mysqli_connect_errno()) {
+    echo "Failed to connect to MySQL:" . mysqli_connect_error();
+    die();
+} else {
+    echo "connected to database";
+}
+
+/*if((!isset($_SESSION['logged_in'])) or $_SESSION['logged_in']!=1){
+    header("Location: error_page.php");
+}*/
+
+if (isset($_GET['item'])){
+    $id = $_GET['item'];
+}else{
+    $id = 1;
+}
+
+$this_item_query = "SELECT * FROM items WHERE ItemID='" . $id . "'";
+$this_item_result = mysqli_query($con, $this_item_query);
+$this_item_record = mysqli_fetch_assoc($this_item_result);
+
+$all_items_query = "SELECT * FROM items";
+$all_items_result = mysqli_query($con, $all_items_query);
+
+$update_items = "SELECT * FROM items";
+$update_items_record = mysqli_query($con, $update_items);
+
+$all_orders_query = "SELECT * FROM orders";
+$all_orders_result = mysqli_query($con, $all_orders_query);
+
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -37,6 +73,75 @@
     </div>
 </div>
 
+
+
+<h4>Add another</h4>
+<form action="insert.php" method="post">
+    Item Name: <input type="text" name="ItemName"><br>
+    Cost: <input type="text" name="Price"><br>
+    KJ: <input type="text" name="KJ"><br>
+    Availability(Type 'everyday' or specify day of week: <input type="text" name="Availability"><br>
+    Stock (Type 1 for in stock, 0 for out of stock): <input type="text" name="Stock"><br>
+    Category (hot or cold): <input type="text" name="Category"><br>
+    <input type="submit" value="Insert">
+</form>
+
+
+<h4>Update items</h4>
+
+<table>
+    <tr>
+        <th>Item Information</th>
+        <th>Price</th>
+        <th>KJ</th>
+        <th>Availability</th>
+        <th>Stock</th>
+        <th>Category</th>
+        <th>Submit</th>
+        <th>Delete</th>
+    </tr>
+    <?php
+    while($row = mysqli_fetch_array($update_items_record))
+    {
+        echo "<tr><form action = update.php method= post>";
+        echo "<td><input type='text' name='ItemName' value='".$row['ItemName']."'></td>";
+        echo "<td><input type='text' name='Price' value='".$row['Price']."'></td>";
+        echo "<td><input type='number' name='KJ' value='".$row['KJ']."'></td>";
+        echo "<td><input type='text' name='Availability' value='".$row['Availability']."'></td>";
+        echo "<td><input type='number' name='Stock' value='".$row['Stock']."'></td>";
+        echo "<td><input type='text' name='Category' value='".$row['Category']."'></td>";
+        echo "<input type=hidden name=ItemID value='".$row['ItemID']."'>";
+        echo "<td><input type =submit></td>";
+        echo "<td><a href=delete.php?ItemID=".$row['ItemID'].">Delete</a></td>";
+        echo "</form></tr>";
+    }
+    ?>
+</table>
+
+<form action="admin.php" method="post">
+    <input type='submit' name='orders' value="View orders">
+</form>
+
+<?php
+if(isset($_POST['orders']))
+{
+    $result=mysqli_query($con, "SELECT StudentID, ItemID FROM orders");
+    if(mysqli_num_rows($result)!=0)
+    {
+        while($test = mysqli_fetch_array($result))
+        {
+            echo "<table><tr><th>Student ID</th><th>Item ID</th></tr>";
+            // output data of each row
+            while($row = $result->fetch_assoc()) {
+                echo "</td><td>" . $row["StudentID"]. "</td><td>" . $row["ItemID"]. "</td></tr>";
+            }
+            echo "</table>";
+        }
+    }
+}
+?>
+
+
 <!-- Footer -->
 <section id="footer">
     <div class="container">
@@ -66,7 +171,7 @@
     </div>
 </section>
 
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.bundle.min.js"></script>
+<script src="jquery.min.js"></script>
+<script src="bootstrap.bundle.min.js"></script>
 </body>
 </html>
