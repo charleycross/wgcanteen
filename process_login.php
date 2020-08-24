@@ -2,7 +2,7 @@
 
 session_start();
 
-$con = mysqli_connect("localhost", "crossch", "tallpark84", "crossch_canteen");
+include 'connection.php';
 
 $user = trim($_POST['username']);
 $pass = trim($_POST['password']);

@@ -1,6 +1,6 @@
 <?php
 
-$con = mysqli_connect("localhost", "crossch", "tallpark84", "crossch_canteen");
+include 'connection.php';
 $FName = "";
 $LName = "";
 $Email = "";
