@@ -57,7 +57,7 @@ if (mysqli_connect_errno()) {
             <div class="row py-5">
                 <div class="col-lg-4">
                     <figure class="rounded p-3 bg-white shadow-sm">
-                        <img src="https://i.ibb.co/BfS2CKr/christian-bolt-Uf0a-Vyl5-C70-unsplash.jpg" alt="joyce-panda-lpsb-MRRq-MQw-unsplash" class="w-100 card-img-top">
+                        <img src="https://i.ibb.co/BfS2CKr/christian-bolt-Uf0a-Vyl5-C70-unsplash.jpg" alt="Hot fries" class="w-100 card-img-top">
                         <figcaption class="p-4 card-img-bottom">
                             <h2 class="h5 font-weight-bold mb-2 font-italic">Hot Food</h2>
                             <p class="mb-0 text-small text-muted font-italic">View our orders page to view our delicious selection of hot food!</p>
@@ -66,7 +66,7 @@ if (mysqli_connect_errno()) {
                 </div>
                 <div class="col-lg-4">
                     <figure class="rounded p-3 bg-white shadow-sm">
-                        <img src="https://i.ibb.co/vVBTv8c/miguel-andrade-p99-OIgwz-Bu4-unsplash.jpg" alt="" class="w-100 card-img-top">
+                        <img src="https://i.ibb.co/vVBTv8c/miguel-andrade-p99-OIgwz-Bu4-unsplash.jpg" alt="Hand holding an ice block" class="w-100 card-img-top">
                         <figcaption class="p-4 card-img-bottom">
                             <h2 class="h5 font-weight-bold mb-2 font-italic">Cold Food</h2>
                             <p class="mb-0 text-small text-muted font-italic">We also have a wonderful selection of cold food for those hot summer days</p>
@@ -75,7 +75,7 @@ if (mysqli_connect_errno()) {
                 </div>
                 <div class="col-lg-4">
                     <figure class="rounded p-3 bg-white shadow-sm">
-                        <img src="https://i.ibb.co/p1Mw99S/nathan-dumlao-d-H67n-Su-Fkv8-unsplash.jpg" alt="" class="w-100 card-img-top">
+                        <img src="https://i.ibb.co/p1Mw99S/nathan-dumlao-d-H67n-Su-Fkv8-unsplash.jpg" alt="Three smoothies in jars with straws" class="w-100 card-img-top">
                         <figcaption class="p-4 card-img-bottom">
                             <h2 class="h5 font-weight-bold mb-2 font-italic">Drinks</h2>
                             <p class="mb-0 text-small text-muted font-italic">Feeling thirsty? Feel free to browse our drinks range</p>
@@ -93,7 +93,7 @@ if (mysqli_connect_errno()) {
                 <div class="col-lg-4">
                     <!-- item -->
                     <figure class="rounded caption-1">
-                        <img src="https://i.ibb.co/89Y6npr/jessica-da-rosa-w-XJVi-Xx-HP44-unsplash.jpg" alt="" class="w-100 card-img-top border border-white border-md">
+                        <img src="https://i.ibb.co/89Y6npr/jessica-da-rosa-w-XJVi-Xx-HP44-unsplash.jpg" alt="Friends sitting at table and eating together" class="w-100 card-img-top border border-white border-md">
                         <figcaption class="px-5 py-4 text-right text-light">
                             <h2 class="h5 font-weight-bold mb-0">Image caption</h2>
                             <p class="text-small">By Jason Doe</p>
@@ -104,7 +104,7 @@ if (mysqli_connect_errno()) {
                 <div class="col-lg-4">
                     <!-- item -->
                     <figure class="rounded caption-1">
-                        <img src="https://i.ibb.co/8xBWp8w/kayleigh-harrington-yhn4okt6ci0-unsplash.jpg" alt="" class="w-100 card-img-top border border-white border-md">
+                        <img src="https://i.ibb.co/8xBWp8w/kayleigh-harrington-yhn4okt6ci0-unsplash.jpg" alt="Cafe/canteen surrounded in greenery" class="w-100 card-img-top border border-white border-md">
                         <figcaption class="px-5 py-4 text-right text-light">
                             <h2 class="h5 font-weight-bold mb-0">Image caption</h2>
                             <p class="text-small">By Jason Doe</p>
@@ -115,7 +115,7 @@ if (mysqli_connect_errno()) {
                 <div class="col-lg-4">
                     <!-- item -->
                     <figure class="rounded caption-1">
-                        <img src="https://i.ibb.co/K0gsttG/kristina-bratko-n-P11-Tkjx-J7s-unsplash.jpg" alt="" class="w-100 card-img-top border border-white border-md">
+                        <img src="https://i.ibb.co/K0gsttG/kristina-bratko-n-P11-Tkjx-J7s-unsplash.jpg" alt="Fresh pizza layed out in cardboard boxes" class="w-100 card-img-top border border-white border-md">
                         <figcaption class="px-5 py-4 text-right text-light">
                             <h2 class="h5 font-weight-bold mb-0">Image caption</h2>
                             <p class="text-small">By Jason Doe</p>
@@ -132,7 +132,7 @@ if (mysqli_connect_errno()) {
                 <h2 class="h4 font-italic mb-4">The Wellington Girl's Canteen</h2>
                 <div class="row">
                     <div class="col-lg-5">
-                        <img src="https://i.ibb.co/5sQ8KDd/wgc-canteen.jpg" alt="" class="w-100 mb-4 border border-md border-white shadow-sm">
+                        <img src="https://i.ibb.co/5sQ8KDd/wgc-canteen.jpg" alt="Exterior picture of Wellington Girls' College building" class="w-100 mb-4 border border-md border-white shadow-sm">
                     </div>
                     <div class="col-lg-7">
                         <p class="font-italic text-muted"> Having a tough day at school? Place an order at the WGC Canteen for some delicious food that will be sure to make your day just a little bit better.</p>
